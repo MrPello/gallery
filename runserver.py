@@ -1,5 +1,5 @@
 """
-This script runs the gallery application using a development server.
+This script runs the gallery application using a development server. Test.
 """
 from os import environ
 from gallery import app
