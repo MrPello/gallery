@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+ <!-- Main jumbotron for a primary marketing message or call to action -->
+<div style="background:transparent !important" class="jumbotron">
+    <div class="container-fluid">
+        <div class="row no-gutter">
+            <div class="col-xs-6">
+                <h3 align="center">Latest</h3>
+                <img src="{{ url_for(gallery_url, filename=images_sorted[0]) }}" class="img-responsive" alt="Responsive image">
+            </div>
+            <div class="col-xs-6">
+                <h3 align="center">Reference</h3>
+                <img src="{{ url_for(gallery_url, filename=images_sorted[-1]) }}" id="compare" class="img-responsive" alt="Responsive image">
+            </div>
+        </div>
+     </div>
+</div>
+
+<div class="container-fluid">
+    <!-- Example row of columns -->
+    <div class="row no-gutter">
+        {% for image in images_sorted[1:] %}
+        <div class="col-xs-2">
+            <img src="{{ url_for(gallery_url, filename=image) }}" onclick="showPicture(this.src)" class="img-responsive" alt="Responsive image">
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script type="text/javascript">
+    function showPicture(URL)
+    {
+        var image = document.getElementById('compare');
+        image.src = URL;
+    }
+</script>
+
+{% endblock %}
